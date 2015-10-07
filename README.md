@@ -5,6 +5,7 @@ As a quick and fun exercise, we will playing with the Twitter API with the goal 
 
 ###Ruby Twitter Gem
 `gem install twitter`
+
 [Documentation](https://github.com/sferik/twitter)
 
 ###Twitter Bot Examples
