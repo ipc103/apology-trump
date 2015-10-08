@@ -33,7 +33,7 @@ class ApologyTrump
   end
 
   def apology_tweet(tweet_text)
-    "#{APOLOGIES.sample} @realDonaldTrump: #{tweet_text}"
+    "I apologize for this remark @realDonaldTrump: #{tweet_text}"
   end
 
   def user_timeline
