@@ -5,7 +5,7 @@ Dotenv.load
 
 class ApologyTrump
 
-  APOLOGIES = ["Sorry for saying this", "I apologize for this remark", "My bad :(", "Oops, this won't be good", "I didn't mean this either, sorry"]
+  APOLOGIES = ["Sorry for saying this", "I apologize for this remark", "My bad :(", "Oops, this won't be good", "I didn't mean this either, sorry", "This was wrong and I am sorry"]
 
   attr_reader :client
 
