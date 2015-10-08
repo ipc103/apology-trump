@@ -26,11 +26,11 @@ class ApologyTrump
   def apologize
     tweet = apology_tweet(trump_most_recent)
     tweet = tweet[0..136] + "..." if tweet.length > 140
-    client.update(tweet) unless tweet == most_recent
+    client.update(tweet) unless tweet == most_recent && tweet[0] != "@"
   end
 
   def apology_tweet(tweet_text)
-    "The following remark was out of line and I apologize RT @realDonaldTrump: #{tweet_text}"
+    "I apologize for this remark: RT @realDonaldTrump: #{tweet_text}"
   end
 
   def user_timeline
@@ -43,8 +43,6 @@ class ApologyTrump
 
 end
 
-ApologyTrump.new.apologize
-sleep(240)
 ApologyTrump.new.apologize
 
 
