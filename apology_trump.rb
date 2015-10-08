@@ -1,9 +1,10 @@
 require 'bundler'
-require 'pry'
 Bundler.require
 Dotenv.load
 
 class ApologyTrump
+
+  APOLOGIES = ["Sorry for saying this", "I apologize for this remark:", "My bad :(", "Oops, this won't be good:"]
 
   attr_reader :client
 
@@ -32,7 +33,7 @@ class ApologyTrump
   end
 
   def apology_tweet(tweet_text)
-    "I apologize for this remark: RT @realDonaldTrump: #{tweet_text}"
+    "#{APOLOGIES.sample} @realDonaldTrump: #{tweet_text}"
   end
 
   def user_timeline
