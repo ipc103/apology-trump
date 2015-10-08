@@ -1,10 +1,11 @@
 require 'bundler'
+require 'pry'
 Bundler.require
 Dotenv.load
 
 class ApologyTrump
 
-  APOLOGIES = ["Sorry for saying this", "I apologize for this remark:", "My bad :(", "Oops, this won't be good:"]
+  APOLOGIES = ["Sorry for saying this", "I apologize for this remark", "My bad :(", "Oops, this won't be good", "I didn't mean this either, sorry"]
 
   attr_reader :client
 
@@ -29,11 +30,11 @@ class ApologyTrump
   def apologize
     tweet = apology_tweet(trump_most_recent)
     tweet = tweet[0..136] + "..." if tweet.length > 140
-    client.update(tweet) unless tweet == most_recent
+    client.update(tweet) unless already_tweeted?(tweet)
   end
 
   def apology_tweet(tweet_text)
-    "I apologize for this remark @realDonaldTrump: #{tweet_text}"
+    "#{APOLOGIES.sample} @realDonaldTrump: #{tweet_text}"
   end
 
   def user_timeline
@@ -42,6 +43,14 @@ class ApologyTrump
 
   def most_recent
     client.user_timeline.first.full_text
+  end
+
+  def original_text(tweet)
+    tweet.split("@realDonaldTrump:").last[0..30]
+  end
+
+  def already_tweeted?(tweet)
+    original_text(tweet) == original_text(most_recent)
   end
 
 end
