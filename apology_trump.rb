@@ -1,4 +1,5 @@
 require 'bundler'
+require 'pry'
 Bundler.require
 Dotenv.load
 
@@ -20,13 +21,14 @@ class ApologyTrump
   end
 
   def trump_most_recent
-    trump_tweets.first.full_text
+    tweet = trump_tweets.find {|tweet| tweet.full_text[1] != "@"}
+    tweet.full_text
   end
 
   def apologize
     tweet = apology_tweet(trump_most_recent)
     tweet = tweet[0..136] + "..." if tweet.length > 140
-    client.update(tweet) unless tweet == most_recent && tweet[0] != "@"
+    client.update(tweet) unless tweet == most_recent
   end
 
   def apology_tweet(tweet_text)
