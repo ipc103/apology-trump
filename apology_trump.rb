@@ -13,7 +13,6 @@ class ApologyTrump
       config.access_token = ENV["ACCESS_TOKEN"]
       config.access_token_secret = ENV["ACCESS_TOKEN_SECRET"]
     end
-
   end
 
   def trump_tweets
@@ -44,6 +43,8 @@ class ApologyTrump
 
 end
 
+ApologyTrump.new.apologize
+sleep(240)
 ApologyTrump.new.apologize
 
 
